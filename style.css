@@ -1,3 +1,7 @@
+#hs-button {
+    background-color: gold;
+}
+
 #wrapper {
     position: absolute;
     left: 30%;
@@ -6,14 +10,14 @@
     height: 400px;
     border: 5px solid darkred;
 }
-#startTime {
+#start-btn {
     background-color: blue;
     margin-left: 33%;
     padding: 15px 32px;
     font-size: 20px;
     color: white;
 }
-#questionsDiv {
+#questions-container {
     margin: 20px;
 }
 
@@ -31,7 +35,6 @@
     left: 55%;
     width: auto;
     text-align: center;
-    text-decoration: none;
 }
 
 
@@ -43,7 +46,7 @@
     font-size: 20px;
     color: white;
     top: 30%;
-    right: 5%;
+    right: 2.5%;
     text-align: center;
 }
 
@@ -92,59 +95,32 @@ li {
 }
 
 /* Start media queries */
+
 /* A Media Query max-width: 786px */
 @media screen and (max-width: 786px) {
-/* Resized content to fit 786px  */
-body {
-    max-width: 786px;
-}
-/* Resized main-content to fit 786px  */
-#wrapper {
-position: absolute;
-left: 20%;
-}
-
-/* a {
-margin-left: 20%;
-padding-left: 10px;
-} */
-#goBack {
+    /* Resized content to fit 786px  */
+    body {
+        max-width: 786px;
+    }
+    /* Resized main-content to fit 786px  */
+    #wrapper {
+    position: absolute;
+    left: 20%;
+    }
+    }
     
-    position: relative;
-    left: 55%;
-}
-
-#clear {
-    
-    position: relative;
-    right: 5%;
-    
-}
-}
-
 /* A Media Query max-width: 640px */
 @media screen and (max-width: 640px) {
-/* Resized content to fit 640px  */
-body {
-    min-width: 640px;
-}
-/* Resized main-content to fit 640px  */
-#wrapper {
-position: absolute;
-left: 10%;
-}
-.navbar-brand {
-  color: darkblue;
-  
-}
+    /* Resized content to fit 640px  */
+    body {
+        min-width: 640px;
+    }
+    /* Resized main-content to fit 640px  */
+    #wrapper {
+    position: absolute;
+    left: 10%;
+    }
+    }
+    
+    
 
-
-}
-
-/* * {
-    box-sizing: border-box;
-}
-
-body {
-    background-color: cornflowerblue;
-} */

@@ -1,5 +1,4 @@
-
-var questions = [
+  var questions = [
     {
         title: "Inside which HTML element do we put the JavaScript?",
         choices: ["<js>", "<scripting>", "<javascript>", "<script>"],
@@ -22,7 +21,7 @@ var questions = [
     },
     {
         title: "How do you add a comment in Javascript?",
-        choices: ["//This is a comment", "<!--This is a comment--!>", "'This is a comment", "<This is a comment>"],
+        choices: ["//This is a comment", "<!--This is a comment--!>", "''This is a comment", "<This is a comment>"],
         answer: "//This is a comment"
     },
 
@@ -32,9 +31,9 @@ var score = 0;
 var questionIndex = 0;
 
 // Declared variables
-var currentTime = document.getElementById("#currentTime");
-var timer = document.getElementById("#startTime");
-var questionsDiv = document.getElementById("#questions-container");
+var currentTime = document.getElementById("#current-time");
+var timer = document.getElementById("#start-btn");
+var questionsEl = document.getElementById("#questions-container");
 var wrapper = document.getElementById("#wrapper");
 
 var secondsLeft = 76;
@@ -42,9 +41,8 @@ var holdInterval = 0;
 var penalty = 10;
 var ulCreate = document.createElement("ul");
 
-// Triggers timer on button, shows user a display on the screen
+// Triggers timer on button click, shows user a display on the screen
 timer.addEventListener("click", function () {
-    // We are checking zero because its originally set to zero
     if (holdInterval === 0) {
         holdInterval = setInterval(function () {
             secondsLeft--;
@@ -62,21 +60,19 @@ timer.addEventListener("click", function () {
 
 // Renders questions and choices to page: 
 function render(questionIndex) {
-    // Clears existing data 
-    questionsDiv.innerHTML = "";
+    questionsEl.innerHTML = "";
     ulCreate.innerHTML = "";
-    // For loops to loop through all info in array
+    // For loops to loop through all info in questions array
     for (var i = 0; i < questions.length; i++) {
-        // Appends question title only
         var userQuestion = questions[questionIndex].title;
         var userChoices = questions[questionIndex].choices;
-        questionsDiv.textContent = userQuestion;
+        questionsEl.textContent = userQuestion;
     }
     // New for each for question choices
     userChoices.forEach(function (newItem) {
         var listItem = document.createElement("li");
         listItem.textContent = newItem;
-        questionsDiv.appendChild(ulCreate);
+        questionsEl.appendChild(ulCreate);
         ulCreate.appendChild(listItem);
         listItem.addEventListener("click", (compare));
     })
@@ -107,26 +103,24 @@ function compare(event) {
     } else {
         render(questionIndex);
     }
-    questionsDiv.appendChild(createDiv);
+    questionsEl.appendChild(createDiv);
 
 }
 // All done will append last page
 function allDone() {
-    questionsDiv.innerHTML = "";
+    questionsEl.innerHTML = "";
     currentTime.innerHTML = "";
 
-    // Heading:
     var createH1 = document.createElement("h1");
     createH1.setAttribute("id", "createH1");
     createH1.textContent = "All Done!"
 
-    questionsDiv.appendChild(createH1);
+    questionsEl.appendChild(createH1);
 
-    // Paragraph
     var createP = document.createElement("p");
     createP.setAttribute("id", "createP");
 
-    questionsDiv.appendChild(createP);
+    questionsEl.appendChild(createP);
 
     // Calculates time remaining and replaces it with score
     if (secondsLeft >= 0) {
@@ -135,31 +129,28 @@ function allDone() {
         clearInterval(holdInterval);
         createP.textContent = "Your final score is: " + timeRemaining;
 
-        questionsDiv.appendChild(createP2);
+        questionsEl.appendChild(createP2);
     }
 
-    // label
     var createLabel = document.createElement("label");
     createLabel.setAttribute("id", "createLabel");
     createLabel.textContent = "Enter your initials: ";
 
-    questionsDiv.appendChild(createLabel);
+    questionsEl.appendChild(createLabel);
 
-    // input
     var createInput = document.createElement("input");
     createInput.setAttribute("type", "text");
     createInput.setAttribute("id", "initials");
     createInput.textContent = "";
 
-    questionsDiv.appendChild(createInput);
+    questionsEl.appendChild(createInput);
 
-    // submit
     var createSubmit = document.createElement("button");
     createSubmit.setAttribute("type", "submit");
     createSubmit.setAttribute("id", "Submit");
     createSubmit.textContent = "Submit";
 
-    questionsDiv.appendChild(createSubmit);
+    questionsEl.appendChild(createSubmit);
 
     // Event listener to capture initials and local storage for initials and score
     createSubmit.addEventListener("click", function () {
@@ -167,7 +158,7 @@ function allDone() {
 
         if (initials === null) {
 
-            console.log("No value entered!");
+            console.log("No value entered");
 
         } else {
             var finalScore = {
@@ -184,7 +175,6 @@ function allDone() {
             allScores.push(finalScore);
             var newScore = JSON.stringify(allScores);
             localStorage.setItem("allScores", newScore);
-            // Travels to final page
             window.location.replace("./highscores.html");
         }
     });
