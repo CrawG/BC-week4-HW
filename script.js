@@ -31,18 +31,19 @@ var score = 0;
 var questionIndex = 0;
 
 // Declared variables
-var currentTime = document.getElementById("#current-time");
-var timer = document.getElementById("#start-btn");
-var questionsEl = document.getElementById("#questions-container");
-var wrapper = document.getElementById("#wrapper");
+var currentTime = document.querySelector("#current-time");
+var timer = document.querySelector("#start-btn");
+var questionsEl = document.querySelector("#questions-container");
+var wrapper = document.querySelector("#wrapper");
 
 var secondsLeft = 76;
 var holdInterval = 0;
 var penalty = 10;
 var ulCreate = document.createElement("ul");
 
-// Triggers timer on button click, shows user a display on the screen
+// Timer button starts on click, shows user a display on the screen
 timer.addEventListener("click", function () {
+console.log("timer", timer)
     if (holdInterval === 0) {
         holdInterval = setInterval(function () {
             secondsLeft--;
@@ -58,7 +59,7 @@ timer.addEventListener("click", function () {
     render(questionIndex);
 });
 
-// Renders questions and choices to page: 
+// Renders questions and choices to page 
 function render(questionIndex) {
     questionsEl.innerHTML = "";
     ulCreate.innerHTML = "";
@@ -68,7 +69,7 @@ function render(questionIndex) {
         var userChoices = questions[questionIndex].choices;
         questionsEl.textContent = userQuestion;
     }
-    // New for each for question choices
+    // New forEach for question choices
     userChoices.forEach(function (newItem) {
         var listItem = document.createElement("li");
         listItem.textContent = newItem;
