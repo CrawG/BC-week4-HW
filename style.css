@@ -12,6 +12,7 @@
 }
 
 #wrapper {
+    background-color: cornsilk;
     position: absolute;
     left: 30%;
     top: 20%;
@@ -35,7 +36,7 @@
     float: right;
 }
 
-#goBack {
+#back-btn {
     background-color: blue;
     position: relative;
     padding: 10px;
@@ -49,7 +50,7 @@
 
 
 
-#clear {
+#clear-btn {
     background-color:  blue;
     position: relative;
     padding: 10px;
@@ -97,6 +98,7 @@ li {
     width: 80%;
     font-size: 18px;
     color: white;
+    cursor: pointer;
 }
 
 #createDiv {
