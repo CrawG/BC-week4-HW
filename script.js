@@ -35,23 +35,23 @@ var currentTime = document.querySelector("#current-time");
 var timer = document.querySelector("#start-btn");
 var questionsEl = document.querySelector("#questions-container");
 var wrapper = document.querySelector("#wrapper");
+var createUl = document.createElement("ul");
 
-var secondsLeft = 76;
-var holdInterval = 0;
+var secondsLeft = 75;
+var hold = 0;
 var penalty = 10;
-var ulCreate = document.createElement("ul");
 
-// Timer button starts on click, shows user a display on the screen
+// Timer button starts on click & displays on the screen
 timer.addEventListener("click", function () {
 console.log("timer", timer)
-    if (holdInterval === 0) {
-        holdInterval = setInterval(function () {
+    if (hold === 0) {
+        hold = setInterval(function () {
             secondsLeft--;
             currentTime.textContent = "Time: " + secondsLeft;
 
             if (secondsLeft <= 0) {
-                clearInterval(holdInterval);
-                allDone();
+                clearInterval(hold);
+                finish();
                 currentTime.textContent = "Time's up!";
             }
         }, 1000);
@@ -62,23 +62,24 @@ console.log("timer", timer)
 // Renders questions and choices to page 
 function render(questionIndex) {
     questionsEl.innerHTML = "";
-    ulCreate.innerHTML = "";
-    // For loops to loop through all info in questions array
+    createUl.innerHTML = "";
+    // For loop for info in questions array
     for (var i = 0; i < questions.length; i++) {
         var userQuestion = questions[questionIndex].title;
         var userChoices = questions[questionIndex].choices;
         questionsEl.textContent = userQuestion;
     }
-    // New forEach for question choices
+    // forEach for answer choices
     userChoices.forEach(function (newItem) {
         var listItem = document.createElement("li");
         listItem.textContent = newItem;
-        questionsEl.appendChild(ulCreate);
-        ulCreate.appendChild(listItem);
+        questionsEl.appendChild(createUl);
+        createUl.appendChild(listItem);
         listItem.addEventListener("click", (compare));
     })
 }
-// Event to compare choices with answer
+
+// Compare user choice with answer
 function compare(event) {
     var element = event.target;
 
@@ -94,12 +95,11 @@ function compare(event) {
             secondsLeft = secondsLeft - penalty;
             createDiv.textContent = "Wrong! The correct answer is:  " + questions[questionIndex].answer;
         }
-
     }
     questionIndex++;
 
     if (questionIndex >= questions.length) {
-        allDone();
+        finish();
         createDiv.textContent = "End of quiz!" + " " + "You got  " + score + "/" + questions.length + " correct!";
     } else {
         render(questionIndex);
@@ -107,14 +107,14 @@ function compare(event) {
     questionsEl.appendChild(createDiv);
 
 }
-// All done will append last page
-function allDone() {
+// finish will append last page
+function finish() {
     questionsEl.innerHTML = "";
     currentTime.innerHTML = "";
 
     var createH1 = document.createElement("h1");
     createH1.setAttribute("id", "createH1");
-    createH1.textContent = "All Done!"
+    createH1.textContent = "Quiz complete!"
 
     questionsEl.appendChild(createH1);
 
@@ -127,7 +127,7 @@ function allDone() {
     if (secondsLeft >= 0) {
         var timeRemaining = secondsLeft;
         var createP2 = document.createElement("p");
-        clearInterval(holdInterval);
+        clearInterval(hold);
         createP.textContent = "Your final score is: " + timeRemaining;
 
         questionsEl.appendChild(createP2);
@@ -159,7 +159,7 @@ function allDone() {
 
         if (initials === null) {
 
-            console.log("No value entered");
+            alert("No value entered");
 
         } else {
             var finalScore = {

@@ -1,3 +1,7 @@
+body {
+    background-color: cadetblue;
+}
+
 #hs-button {
     background-color: gold;
 }
@@ -5,7 +9,6 @@
 #current-time {
     background-color: red;
     color: white;
-    /* position: relative; */
     float: left;
     padding-left: 5px;
     padding-right: 5px;
@@ -24,7 +27,7 @@
 #start-btn {
     background-color: blue;
     margin-left: 33%;
-    padding: 15px 32px;
+    padding: 10px 25px;
     font-size: 20px;
     color: white;
 }
@@ -36,44 +39,16 @@
     float: right;
 }
 
-#back-btn {
-    background-color: blue;
-    position: relative;
-    padding: 10px;
-    font-size: 20px;
-    color: white;
-    top: 30%;
-    left: 55%;
-    width: auto;
-    text-align: center;
-}
-
-
-
-#clear-btn {
-    background-color:  blue;
-    position: relative;
-    padding: 10px;
-    font-size: 20px;
-    color: white;
-    top: 30%;
-    right: 2.5%;
-    text-align: center;
-}
 
 button {
     border-radius: 8px;
 }
 
-textarea {
-    width: 90%;
-    margin: 20px;
-}
 
 #Submit {
     background-color: blue;
     margin-left: 33%;
-    padding: 15px 32px;
+    padding: 10px 25px;
     font-size: 20px;
     color: white;
 }
@@ -104,6 +79,29 @@ li {
 #createDiv {
     margin-top: 20px;
     border-top: 1px solid lightgray;
+}
+
+#back-btn {
+    background-color: blue;
+    position: relative;
+    padding: 10px;
+    font-size: 20px;
+    color: white;
+    top: 30%;
+    left: 55%;
+    width: auto;
+    text-align: center;
+}
+
+#clear-btn {
+    background-color:  blue;
+    position: relative;
+    padding: 10px;
+    font-size: 20px;
+    color: white;
+    top: 30%;
+    right: 2.5%;
+    text-align: center;
 }
 
 /* Start media queries */
