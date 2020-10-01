@@ -24,6 +24,16 @@ body {
     border: 5px solid darkred;
 }
 
+li {
+    background-color: rgb(2, 87, 2);
+    margin-top: 10px;
+    padding: 5px 15px;
+    width: 80%;
+    font-size: 18px;
+    color: white;
+    cursor: pointer;
+}
+
 #start-btn {
     background-color: blue;
     margin-left: 33%;
@@ -64,16 +74,6 @@ h1, p {
     text-align: center;
 }
 
-li {
-    background-color: green;
-    margin-top: 10px;
-    padding: 5px 15px;
-    width: 80%;
-    font-size: 18px;
-    color: white;
-    cursor: pointer;
-}
-
 #createDiv {
     margin-top: 20px;
     border-top: 1px solid lightgray;
@@ -98,7 +98,7 @@ li {
     font-size: 20px;
     color: white;
     top: 30%;
-    right: 2.5%;
+    left: 5%;
     text-align: center;
 }
 
