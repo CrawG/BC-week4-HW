@@ -114,7 +114,7 @@ function finish() {
 
     var createH1 = document.createElement("h1");
     createH1.setAttribute("id", "createH1");
-    createH1.textContent = "Quiz complete!"
+    createH1.textContent = "Quiz Complete!"
 
     questionsEl.appendChild(createH1);
 
@@ -158,9 +158,7 @@ function finish() {
         var initials = createInput.value;
 
         if (initials === null) {
-
             alert("No value entered");
-
         } else {
             var finalScore = {
                 initials: initials,
